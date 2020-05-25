@@ -102,3 +102,6 @@ ENV/
 
 # data
 flowers/
+
+# for Jupytext ignoring ipynb files
+*.ipynb
