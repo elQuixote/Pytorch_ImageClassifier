@@ -147,9 +147,9 @@ class Neural_Network(nn.Module):
         if optimizer_name != 'adam' and optimizer_name != 'sgd':
             raise ValueError('Please use either SDG or Adam as optimizers')
         elif optimizer_name == 'adam':
-            net.optimizer = t.optim.Adam(net.model.parameters(), learn_rate)
+            net.optimizer = t.optim.Adam(net.model.classifier.parameters(), learn_rate)
         else:
-            net.optimizer = t.optim.SDG(net.model.parameters(), learn_rate)
+            net.optimizer = t.optim.SDG(net.model.classifier.parameters(), learn_rate)
 
         net.criterion = nn.NLLLoss()
 
@@ -188,7 +188,7 @@ class Neural_Network(nn.Module):
         model.load_state_dict(checkpoint['state_dict'])
         # Make Network
         net = Neural_Network(inputs, hidden_layers, outputs, activation, device, dropout, learn_rate)
-        net.from_loaded_model(model)
+        net.model = model
         net.epochs_completed = checkpoint['data']['epochs_completed']
 
         if mode == 'train':
