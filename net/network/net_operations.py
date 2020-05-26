@@ -62,6 +62,7 @@ class Net_Operations(object):
         Returns:
             Tuple ([floats], [ints]): The tuple containing the list of k probs and k classes.
         '''
+        
         # move model to device
         model.to(device)
         # enable eval mode, turn off dropout
