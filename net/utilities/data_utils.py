@@ -12,7 +12,8 @@ class Data_Utilities(object):
     @staticmethod
     def generate_datasets(params_dict, types_list, resize = 300, crop_size = 224):
 
-        ''' Generators and data manipulation. Generates the required data transformations for us to train properly. 
+        ''' Generators and data manipulation. Generates the required data transformations 
+        for us to train properly. 
         
         Args:
             params_dict (dict): The nested dictionary containing the 'dir', 'batch' and 'shuffle' data.
@@ -45,9 +46,13 @@ class Data_Utilities(object):
             transforms[t] = tf.Compose(transform_list)
 
         # Load the data sets, use dict comprehension to generate key vals for each type
-        datasets = {t: ds.ImageFolder(params_dict[t]['dir'], transforms[t]) for t in types_list}
+        datasets = {t: ds.ImageFolder(params_dict[t]['dir'], 
+                                    transforms[t]) for t in types_list}
         # Define the loaders using the datasets and the transforms
-        dataloaders = {t: torch.utils.data.DataLoader(datasets[t], params_dict[t]['batch'], params_dict[t]['shuffle']) for t in types_list}
+        dataloaders = {t: torch.utils.data.DataLoader(datasets[t], 
+                                                    params_dict[t]['batch'], 
+                                                    params_dict[t]['shuffle']) 
+                                                    for t in types_list}
 
         return datasets, dataloaders
 
