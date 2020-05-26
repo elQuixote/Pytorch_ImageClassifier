@@ -4,6 +4,11 @@ import torchvision.models as models
 
 from network.neural_net import Neural_Network
 
+'''net_utils.py: Static class for general network utilities '''
+__author__ = "Luis Quinones"
+__email__ = "luis@complicitmatter.com"
+__status__ = "Prototype"
+
 class Net_Utilities(object):
 
     @staticmethod
