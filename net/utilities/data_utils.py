@@ -53,6 +53,6 @@ class Data_Utilities(object):
                                                     params_dict[t]['batch'], 
                                                     params_dict[t]['shuffle']) 
                                                     for t in types_list}
-
+        datasets['test']
         return datasets, dataloaders
 
