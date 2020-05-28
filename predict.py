@@ -22,7 +22,7 @@ def main():
         names = ['image_path', 'model_checkpoint_path', '--top_k', '--category_names', '--gpu']
         defaults = [None, None, 3, 'flower_to_name.json', True]
         types = [str, str, int, str, bool]
-        helps = ['the path to the image we want to predict',
+        helpers = ['the path to the image we want to predict',
                 'the path to the model checkpoint to load',
                 'return the top k most likely cases',
                 'Json file with the mapping of categories to real names',
@@ -33,7 +33,7 @@ def main():
             data['name'] = names[i]
             data['default'] = defaults[i]
             data['type'] = types[i]
-            data['help'] = helps[i]
+            data['help'] = helpers[i]
 
             args_dict[i] = data
 

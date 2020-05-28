@@ -59,7 +59,7 @@ class Utilities(object):
 
     @staticmethod
     def get_input_args(args_dict):
-        ''' Predict the class (or classes) of an image using a trained deep learning model.
+        ''' Command-line arguments and options
 
         Command Line Args:
             args_dict (dict): Dictionary with the following info

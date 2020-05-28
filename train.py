@@ -9,6 +9,11 @@ from utilities.utils import Utilities as utils
 from utilities.net_utils import Net_Utilities as net_utils
 from utilities.data_utils import Data_Utilities as data_util
 
+'''train.py: Train a new network on a dataset of images '''
+__author__ = "Luis Quinones"
+__email__ = "luis@complicitmatter.com"
+__status__ = "Prototype"
+
 def main():
 
     try:
@@ -22,7 +27,7 @@ def main():
         
         defaults = [None, def_save_path, 'vgg16', 0.001, [1024, 512], 2, True]
         types = [str, str, str, float, list, int, bool]
-        helps = ['the directory of the data, ex. flowers/',
+        helpers = ['the directory of the data, ex. flowers/',
                 'the fullpath with name where we want to save our checkpoints, ex. saved/checkpoint_xx.pth',
                 'the architecture to transfer learning, vgg16, resnet50, densenet121',
                 'the learning rate value',
@@ -35,7 +40,7 @@ def main():
             data['name'] = names[i]
             data['default'] = defaults[i]
             data['type'] = types[i]
-            data['help'] = helps[i]
+            data['help'] = helpers[i]
 
             args_dict[i] = data
 
