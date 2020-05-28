@@ -77,10 +77,14 @@ def main():
         # check if the img path exist
         while not os.path.isfile(img_path):
             img_path = input('Image file does not exist, please input a correct path \n')
+            if img_path == 'quit':
+                exit()
 
         # check if the checkpoint file exist
         while not os.path.isfile(model_checkpoint):
-            img_path = input('Model checkpoint does not exist, please input a correct path \n')
+            model_checkpoint = input('Model checkpoint does not exist, please input a correct path \n')
+            if model_checkpoint == 'quit':
+                exit()
 
         while top_k < 1:
             val = input('Top_k value must be greater than 0, please enter a new value \n')
