@@ -3,6 +3,7 @@ from torch import nn
 import torchvision.models as models
 import matplotlib.pyplot as plt
 import numpy as np
+import argparse
 
 '''utils.py: General Utilities '''
 __author__ = "Luis Quinones"
@@ -55,3 +56,37 @@ class Utilities(object):
         idx_classes_dict['probabilities'] = predicted_prob
 
         return idx_classes_dict
+
+    @staticmethod
+    def get_input_args(args_dict):
+        ''' Command-line arguments and options
+
+        Command Line Args:
+            args_dict (dict): Dictionary with the following info
+            {
+                index{{image_path (path): The path to the image we want to predict,
+                       model_checkpoint (path): The pth checkpoint file we want to load,
+                       top_k (int): The top number of classes we want to predict,
+                       category_names (int): Json file with the mappings of categories to names,
+                       gpu (bool): True if we want to use the gpu false if we want to use the cpu}}
+
+        Raises:
+            TODO: Add exceptions
+
+        Returns:
+            parse_args (): The data which stores the command line argument object   
+        '''    
+
+        description = 'This program uses a trained network to predict the class and \
+                       probabliity for an input image.'
+
+        parser = argparse.ArgumentParser(description = description)
+
+        for _, v in args_dict.items():
+            
+            parser.add_argument(v['name'], 
+                                default = v['default'], 
+                                type = v['type'], 
+                                help = v['help'])
+
+        return parser.parse_args()

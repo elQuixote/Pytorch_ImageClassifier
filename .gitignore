@@ -108,3 +108,9 @@ flowers/
 
 # vscode settings
 .vscode
+
+# zip
+*.zip
+
+#
+*.html
