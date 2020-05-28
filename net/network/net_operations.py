@@ -41,7 +41,7 @@ class Net_Operations(object):
         # move to device
         img.to(network.device)
         # generate the prediction
-        top_prob, top_class = Net_Operations.generate_prediction(network.model, img, network.device)
+        top_prob, top_class = Net_Operations.generate_prediction(network.model, img, network.device, topk)
         # remove the tensor cuda by moving to cpu, squeeze to remove dimensions and send to list to index
         top_prob = top_prob.cpu().squeeze().tolist()
         top_class = top_class.cpu().squeeze().tolist()

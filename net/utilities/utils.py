@@ -55,4 +55,3 @@ class Utilities(object):
         idx_classes_dict['probabilities'] = predicted_prob
 
         return idx_classes_dict
-

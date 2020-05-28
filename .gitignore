@@ -105,3 +105,6 @@ flowers/
 
 # for Jupytext ignoring ipynb files
 *.ipynb
+
+# vscode settings
+.vscode
