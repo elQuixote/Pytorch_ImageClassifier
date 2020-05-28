@@ -6,67 +6,40 @@ import sys
 
 from network.net_operations import Net_Operations as net_ops
 from utilities.net_utils import Net_Utilities as net_utils
+from utilities.utils import Utilities as utils
 
 '''predict.py: Predict a flower name from an image along with the probability of that name '''
 __author__ = "Luis Quinones"
 __email__ = "luis@complicitmatter.com"
 __status__ = "Prototype"
 
-def get_input_args():
-    ''' Predict the class (or classes) of an image using a trained deep learning model.
-
-    Command Line Args:
-        image_path (path): The path to the image we want to predict.
-        model_checkpoint (path): The pth checkpoint file we want to load
-        top_k (int): The top number of classes we want to predict
-        category_names (int): Json file with the mappings of categories to names
-        gpu (bool): True if we want to use the gpu false if we want to use the cpu
-
-    Raises:
-        TODO: Add exceptions
-
-    Returns:
-        parse_args (): The data which stores the command line argument object   
-    '''    
-
-    description = 'This program uses a trained network to predict the class and probabliity for an input image.'
-
-    parser = argparse.ArgumentParser(description = description)
-
-    parser.add_argument('image_path', 
-                        type = str, 
-                        help = 'the path to the \
-                        image we want to predict')
-
-    parser.add_argument('model_checkpoint_path', 
-                        type = str, 
-                        help = 'the path to \
-                        the model checkpoint to load')
-
-    parser.add_argument('--top_k', 
-                        default = 3, 
-                        type = int, 
-                        help = 'return the top K most likely cases')
-
-    parser.add_argument('--category_names', 
-                        default = 'flower_to_name.json', 
-                        type = str, 
-                        help = 'Json file with the mapping \
-                                of categories to real names')
-
-    parser.add_argument('--gpu',
-                        default = False,
-                        type = bool,
-                        help = 'Use the gpu for computing, if no use cpu')
-
-    return parser.parse_args()
-
 def main():
 
     try:
+
+        args_dict = {}
+
+        names = ['image_path', 'model_checkpoint_path', '--top_k', '--category_names', '--gpu']
+        defaults = [None, None, 3, 'flower_to_name.json', True]
+        types = [str, str, int, str, bool]
+        helps = ['the path to the image we want to predict',
+                'the path to the model checkpoint to load',
+                'return the top k most likely cases',
+                'Json file with the mapping of categories to real names',
+                'Use the gpu for computing, if no use cpu']
+                
+        for i in range(len(names)):
+            data = {}
+            data['name'] = names[i]
+            data['default'] = defaults[i]
+            data['type'] = types[i]
+            data['help'] = helps[i]
+
+            args_dict[i] = data
+
         # get the args
-        args = get_input_args()
-        
+        args = utils.get_input_args(args_dict)        
+
         # variables
         img_path = args.image_path
         model_checkpoint = args.model_checkpoint_path
@@ -115,8 +88,12 @@ def main():
         # make the predictions
         results_dict = net_ops.predict(mfcp, img_path, categories_to_name, topk = top_k)
         names = [categories_to_name[x] for x in results_dict['idx_to_class']]
+
+        # get flower name from path
+        flower_name = categories_to_name[img_path.split('/')[-2]]
         
         # print the top n results
+        print('FLOWER NAME IS {} \n'.format(flower_name.upper()))
         print('THE TOP {} RESULTS ARE:'.format(top_k))
         for i, name in enumerate(names):
             print('Name = {} \nProbability = {} \n'.format(name, results_dict['probabilities'][i]))

@@ -185,7 +185,8 @@ class Neural_Network(nn.Module):
             self.epochs_completed += 1
 
         t_slope, v_slope = self.check_overfitting(training_loss_set, validation_loss_set, plot)
-        print('Slope of training curve is {} \nSlope of Validation Curve is {}'.format(t_slope, v_slope))
+        print('Slope of linear reg training curve fit is {} \nSlope of linear reg Validation curve fit is {}'.format(t_slope, 
+                                                                                                                    v_slope))
         print('Training session highest accuracy was {} on epoch {} batch iteration {}'.format(highest_accuracy, 
                                                                                              high_acc_epoch, 
                                                                                              high_acc_iter))
@@ -203,7 +204,7 @@ class Neural_Network(nn.Module):
             TODO: Add exceptions.
 
         Returns:
-            None.
+            loss,accuracy (tuple): The loss and accuracy of the validation.
         '''
         
         # enable eval mode, turn off dropout
@@ -246,7 +247,7 @@ class Neural_Network(nn.Module):
             TODO: Add exceptions.
 
         Returns:
-            None.
+            slopes (tuple): The slopes of the linear reg curve fits for both validation/training.
         '''
         # Data 
         tl_x_val = np.arange(0, len(train_losses))
