@@ -14,7 +14,7 @@ Each of the 3 images below is a Toad Lily
 ![IMAGE](assets/flower_set.PNG)
 
 ### Architecture ###
-![IMAGE](assets/Image_classifier.PNG)
+![IMAGE](assets/Image_classifier.png)
 
 ### 1. Developing the application ###
 This is a very abbreviated version of the sequene.
