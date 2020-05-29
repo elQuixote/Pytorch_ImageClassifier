@@ -84,9 +84,22 @@ class Utilities(object):
 
         for _, v in args_dict.items():
             
-            parser.add_argument(v['name'], 
-                                default = v['default'], 
-                                type = v['type'], 
-                                help = v['help'])
+            if v['name'] != '--gpu':
+                parser.add_argument(v['name'], 
+                                    default = v['default'], 
+                                    type = v['type'], 
+                                    help = v['help'])
+
+            elif v['name'] == 'hidden_units':
+                parser.add_argument(v['name'], 
+                    default = v['default'], 
+                    type = v['type'], 
+                    help = v['help'],
+                    nargs='*')
+            else:
+                parser.add_argument(v['name'], 
+                                    default = v['default'], 
+                                    help = v['help'],
+                                    action = 'store_true')
 
         return parser.parse_args()
