@@ -3,21 +3,21 @@
 --------------------------------------------------------------
 ## Pytorch_ImageClassifier ##
 
-This project builds a depp learning network to identify 102 different types of flowers. The dataset was obtained from the [102 category flowers dataset](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/). While this specific example is used on this data, this model can be trained on any set of labeled images. Below are a few examples of the variability between classes and within the classes themselves.
+This project builds a deep learning network to identify 102 different types of flowers. The dataset was obtained from the [102 category flowers dataset](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/). While this specific example is used on this data, this model can be trained on any set of labeled images. Below are a few examples of the variability between classes and within the classes themselves.
 
-<pre>
-<left>Spear Thistle</left>                   
-<center>Fire Lily</center>             
-<right>Cantenbury Bells</right>
-</pre>
+#### Class variability between classes #### 
+The 3 images below are: (Spear Thistle) (Fire Lily) (Cantenbury Bells)
 
 ![IMAGE](assets/diff_flowers_2.PNG)
-
+#### Class variability within classes #### 
+Each of the 3 images below is a Toad Lily
 ![IMAGE](assets/flower_set.PNG)
 
-<center> Each of the 3 images is a Toad Lily</center> 
+### Architecture ###
+![IMAGE](assets/Image_classifier.PNG)
 
 ### 1. Developing the application ###
+This is a very abbreviated version of the sequene.
 #### Load the data ####
 ```python
 data_dir = 'flowers'
