@@ -9,9 +9,9 @@ This project builds a depp learning network to identify 102 different types of f
 Spear Thistle                      Fire Lily                 Cantenbury Bells
 </pre>
 
-![IMAGE](assets/diff_flowers_2.png)
+![IMAGE](assets/diff_flowers_2.PNG)
 
-![IMAGE](assets/flower_set.png)
+![IMAGE](assets/flower_set.PNG)
 
 <center> Each of the 3 images is a Toad Lily</center> 
 
@@ -38,7 +38,7 @@ neural_net = Net_Utilities.net_from_torchvision([1024,512], 102, 'relu', device,
 # train for 25 epochs
 neural_net.train_network(dataloaders['train'], dataloaders['validate'], 5, plot = True)
 ```
-![IMAGE](assets/train.png)
+![IMAGE](assets/train.PNG)
 
 #### Test the network ####
 ```python
@@ -80,7 +80,7 @@ probabilities:[0.9390610456466675, 0.03997050225734711, 0.006514083594083786, 0.
 
 #### Check results ####
 Display n number of images and their top k probabilities along with the actual image 
-![IMAGE](assets/results.png)
+![IMAGE](assets/results.PNG)
 
 
 ### 2. Command line application specifications ###
@@ -110,6 +110,6 @@ The project submission must include at least two files <code>train.py</code> and
         
 #### Test command line application ####
 predict.py
-![IMAGE](assets/predicting.png)
+![IMAGE](assets/predicting.PNG)
 train.py
-![IMAGE](assets/training.png)
+![IMAGE](assets/training.PNG)
