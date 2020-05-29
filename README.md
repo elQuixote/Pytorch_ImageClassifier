@@ -6,7 +6,9 @@
 This project builds a depp learning network to identify 102 different types of flowers. The dataset was obtained from the [102 category flowers dataset](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/). While this specific example is used on this data, this model can be trained on any set of labeled images. Below are a few examples of the variability between classes and within the classes themselves.
 
 <pre>
-Spear Thistle                      Fire Lily                 Cantenbury Bells
+<left>Spear Thistle</left>                   
+<center>Fire Lily</center>             
+<right>Cantenbury Bells</right>
 </pre>
 
 ![IMAGE](assets/diff_flowers_2.PNG)
