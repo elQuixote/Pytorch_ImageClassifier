@@ -20,7 +20,7 @@ def main():
         args_dict = {}
 
         names = ['image_path', 'model_checkpoint_path', '--top_k', '--category_names', '--gpu']
-        defaults = [None, None, 3, 'flower_to_name.json', True]
+        defaults = [None, None, 3, 'flower_to_name.json', False]
         types = [str, str, int, str, bool]
         helpers = ['the path to the image we want to predict',
                 'the path to the model checkpoint to load',
