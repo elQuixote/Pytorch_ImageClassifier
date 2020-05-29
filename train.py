@@ -25,13 +25,13 @@ def main():
         def_save_path = os.getcwd() + '/checkpoint_nn_train.pth'
         def_save_path = def_save_path.replace('\\','/')
         
-        defaults = [None, def_save_path, 'vgg16', 0.001, [1024, 512], 2, True]
-        types = [str, str, str, float, list, int, bool]
+        defaults = [None, def_save_path, 'vgg16', 0.001, '1024, 512', 2, False]
+        types = [str, str, str, float, str, int, bool]
         helpers = ['the directory of the data, ex. flowers/',
                 'the fullpath with name where we want to save our checkpoints, ex. saved/checkpoint_xx.pth',
                 'the architecture to transfer learning, vgg16, resnet50, densenet121',
                 'the learning rate value',
-                'the list of hidden layer sizes',
+                'the values for the hidden layer sizes form ex. 1024,512',
                 'the number of epochs to train',
                 'Use the gpu for computing, if no use cpu']
                 
@@ -59,6 +59,9 @@ def main():
         epochs = args.epochs 
         enable_gpu = args.gpu 
 
+        trim = hidden_layers.strip('[]').split(',')
+        hidden_layers = [int(i) for i in trim] 
+
         # check for gpu
         if not t.cuda.is_available() and enable_gpu:
             print('Your device does not have a CUDA capable device, we will use the CPU instead')
@@ -84,7 +87,7 @@ def main():
         neural_net = net_utils.net_from_torchvision(hidden_layers, 102, 'relu', processor, learn_rate = learn_rate, name = arch)
 
         # train for n epochs
-        neural_net.train_network(dataloaders['train'], dataloaders['validate'], epochs, plot = False)
+        neural_net.train_network(dataloaders['train'], dataloaders['validate'], epochs, plot = True)
 
         # save model
         neural_net.save_model_checkpoint(checkpt_dir, datasets['train'].class_to_idx)
